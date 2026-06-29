@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#13293D" />
+
+  <!-- progressive enhancement: mark JS available so reveal-animations only hide content when JS can show it again -->
+  <script>document.documentElement.classList.add("js");</script>
+
+  <title>Crete · WeRoad — 10–12 Luglio</title>
+  <meta name="description" content="Tre giorni a Creta con WeRoad. Itinerario, voli, hotel, ristoranti e tutto ciò che serve ai 18 partecipanti. Un weekend nell'Egeo, curato nei dettagli." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Crete · WeRoad — 10–12 Luglio" />
+  <meta property="og:description" content="Tre giorni nell'Egeo. 18 persone. Un solo obiettivo: vivere Creta al massimo." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/hero/hero-crete.jpg" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="images/icons/icon-192.png" />
+
+  <!-- Fonts: preconnect + display swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Styles (bump ?v= on each release to refresh caches) -->
+  <link rel="stylesheet" href="css/style.css?v=40" />
+  <link rel="stylesheet" href="css/animations.css?v=40" />
+</head>
+
+<body>
+  <!-- ░░ Grain / noise overlay ░░ -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ░░ Custom cursor (desktop only, JS-toggled) ░░ -->
+  <div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span></div>
+
+  <!-- ░░ Preloader ░░ -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <span class="preloader__word">Κρήτη</span>
+      <span class="preloader__bar"><span class="preloader__fill"></span></span>
+    </div>
+  </div>
+
+  <a href="#itinerario" class="skip-link">Vai al contenuto</a>
+
+  <!-- ░░ Header ░░ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#top" class="brand" aria-label="Crete — torna su">
+        <span class="brand__name">CRETE</span>
+        <span class="brand__sub">WeRoad · 10–12 luglio</span>
+      </a>
+      <nav class="nav__links" aria-label="Navigazione principale">
+        <a href="#escursione">Escursione</a>
+        <a href="#itinerario">Itinerario</a>
+        <a href="#hotel">Hotel</a>
+        <a href="#mangiare">Mangiare</a>
+        <a href="#uscire">Serate</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Apri menù" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ░░ Mobile menu ░░ -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="menu__links">
+      <a href="#chi-siamo">Chi siamo</a>
+      <a href="#escursione">L'escursione</a>
+      <a href="#itinerario">Itinerario</a>
+      <a href="#uscire">Le serate</a>
+      <a href="#voli">Voli</a>
+      <a href="#hotel">Hotel</a>
+      <a href="#rooming">Rooming</a>
+      <a href="#cassa">Cassa comune</a>
+      <a href="#mangiare">Dove mangiare</a>
+      <a href="#roster">Il gruppo</a>
+      <a href="#countdown">Countdown</a>
+    </nav>
+  </div>
+
+  <main id="top">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="hero">
+      <div class="hero__media" data-parallax="0.18">
+        <img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?w=1920&auto=format&fit=crop&q=85"
+             alt="Acque turchesi e spiaggia di Creta vista dall'alto" fetchpriority="high" />
+        <div class="hero__scrim"></div>
+      </div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow reveal">Egeo · Grecia</p>
+        <h1 class="hero__title">
+          <span class="line"><span>C</span><span>R</span><span>E</span><span>T</span><span>E</span></span>
+        </h1>
+        <p class="hero__lede reveal">
+          3 giorni. 18 persone.<br />
+          Una <em>barca</em> nella Baia di Mirabello<br />
+          e le <em>notti</em> di Creta.
+        </p>
+        <a href="#chi-siamo" class="btn btn--ghost reveal" data-cursor="hover">
+          <span>Scopri il viaggio</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- soft animated waves -->
+      <svg class="hero__waves" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,80 C240,120 480,40 720,70 C960,100 1200,50 1440,80 L1440,140 L0,140 Z" />
+        <path d="M0,95 C240,60 480,110 720,90 C960,70 1200,115 1440,95 L1440,140 L0,140 Z" />
+      </svg>
+
+      <a href="#chi-siamo" class="hero__scroll" aria-label="Scorri">
+        <span class="hero__scroll-line"></span>
+      </a>
+    </section>
+
+    <!-- ═══ CHI SIAMO ═══ -->
+    <section class="about" id="chi-siamo">
+      <figure class="about__photo reveal" data-parallax="0.08">
+        <img src="images/backgrounds/about-group.webp"
+             alt="Il gruppo di viaggio davanti al mare" loading="lazy" />
+      </figure>
+      <div class="about__text">
+        <p class="section-index">01 — Chi siamo</p>
+        <h2 class="display reveal">Ciao!<br />Sono <span class="ink">Davide.</span></h2>
+        <p class="lead reveal">
+          Questo sarà il mio sedicesimo viaggio come coordinatore WeRoad.
+          L'obiettivo? Farvi vivere un weekend incredibile, conoscere persone
+          fantastiche e portarvi nei posti migliori dell'isola.
+        </p>
+        <div class="about__badge reveal">
+          <span class="about__badge-num">16°</span>
+          <span class="about__badge-label">viaggio WeRoad<br /><strong>Coordinatore esperto</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FEATURE · ESCURSIONE IN BARCA (clou del weekend) ═══ -->
+    <section class="feature" id="escursione">
+      <div class="feature__media" data-parallax="0.12">
+        <img src="https://images.unsplash.com/photo-1540946485063-a40da27545f8?w=1920&auto=format&fit=crop&q=85" alt="Barca a vela sulle acque cristalline della Baia di Mirabello" loading="lazy" />
+        <div class="feature__scrim"></div>
+      </div>
+      <div class="feature__content">
+        <p class="section-index night-index reveal">Il cuore del weekend</p>
+        <h2 class="feature__title reveal">Un giorno<br />in barca.</h2>
+        <p class="feature__lead reveal">
+          Sabato la <strong>Baia di Mirabello</strong> è tutta nostra. Crociera di quattro ore
+          e mezza tra Spinalonga, la Grotta di Barbarossa e le cale di Kolokytha e Skistra.
+          Drink di raki di benvenuto, giochi galleggianti, anguria a bordo e soste per nuotare
+          nelle acque più trasparenti dell'isola. È già pagata: dovete solo salire.
+        </p>
+        <ul class="feature__stops reveal">
+          <li>Spinalonga</li>
+          <li>Grotta di Barbarossa</li>
+          <li>Baia di Kolokytha</li>
+          <li>Baia di Skistra</li>
+        </ul>
+        <dl class="feature__meta reveal">
+          <div><dt>Ritrovo</dt><dd>Elounda · 10:15</dd></div>
+          <div><dt>Partenza</dt><dd>11:00</dd></div>
+          <div><dt>Durata</dt><dd>≈ 4h 30</dd></div>
+          <div><dt>Quota</dt><dd>Inclusa</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ═══ TIMELINE / ITINERARIO ═══ -->
+    <section class="timeline" id="itinerario">
+      <header class="timeline__head">
+        <p class="section-index">02 — Itinerario</p>
+        <h2 class="display reveal">Tre giorni,<br />scritti con calma.</h2>
+        <p class="timeline__hint reveal">Scegli il giorno — il programma cambia qui sotto.</p>
+      </header>
+      <!-- Tabs + day panels injected by js/timeline.js -->
+      <div class="timeline__tabs" id="timelineTabs" aria-label="Giorni dell'itinerario"></div>
+      <div class="timeline__track" id="timelineTrack"></div>
+    </section>
+
+    <!-- ═══ VOLI ═══ -->
+    <section class="flights" id="voli">
+      <header class="flights__head">
+        <p class="section-index">03 — Voli</p>
+        <h2 class="display reveal">Andata &amp; ritorno</h2>
+      </header>
+      <div class="flights__toggle" id="flightsToggle" role="tablist" aria-label="Direzione del volo"></div>
+      <div class="flights__panels" id="flightsPanels"></div>
+      <p class="flights__note reveal">Voli raggruppati per partenza: trova il tuo nome per sapere con chi viaggi. Hai un volo diverso? Scrivi a Davide.</p>
+    </section>
+
+    <!-- ═══ HOTEL ═══ -->
+    <section class="hotel" id="hotel">
+      <div class="hotel__media reveal" data-parallax="0.1">
+        <img src="images/backgrounds/hotel.webp"
+             alt="Hotel con piscina affacciata sul mare" loading="lazy" />
+      </div>
+      <div class="hotel__panel">
+        <p class="section-index">04 — Dove dormiamo</p>
+        <h2 class="display reveal">Primavera<br />Beach Hotel</h2>
+        <p class="lead reveal">A <strong>Stalida</strong>, sulla costa orientale, a 25–35 minuti da Heraklion. Mare a portata di passeggiata e niente lunghi spostamenti: la base perfetta per un weekend.</p>
+        <dl class="hotel__meta reveal">
+          <div><dt>Check-in</dt><dd>Ven 10 lug</dd></div>
+          <div><dt>Check-out</dt><dd>Dom 12 lug</dd></div>
+          <div><dt>Zona</dt><dd>Stalida</dd></div>
+        </dl>
+        <ul class="hotel__amenities reveal" aria-label="Spiagge raggiungibili a piedi">
+          <li data-icon="sea">Stalis Beach · 1–5 min</li>
+          <li data-icon="sea">Malia Beach · 5–10 min</li>
+          <li data-icon="sea">Sarandaris · 15–20 min</li>
+          <li data-icon="sea">Potamos Beach · 20–30 min</li>
+        </ul>
+        <div class="hotel__map" id="hotelMap" aria-label="Mappa della zona del soggiorno"></div>
+        <a class="hotel__maplink reveal" href="https://www.google.com/maps/search/?api=1&query=Primavera%20Beach%20Hotel%20Stalida%20Crete"
+           target="_blank" rel="noopener" data-cursor="hover">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          Apri il Primavera Beach Hotel su Google Maps
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══ ROOMING ═══ -->
+    <section class="rooming" id="rooming">
+      <header class="rooming__head">
+        <p class="section-index">05 — Rooming</p>
+        <h2 class="display reveal">Le camere,<br />in chiaro.</h2>
+        <p class="lead reveal">Chi dorme con chi. Diciotto viaggiatori più Davide, in 5 triple e 2 doppie.</p>
+      </header>
+      <div class="rooming__layout">
+        <div class="rooming__grid" id="roomGrid"></div>
+        <aside class="rooming__aside" id="roomAside"></aside>
+      </div>
+    </section>
+
+    <!-- ═══ COME ARRIVARE ═══ -->
+    <section class="getting" id="come-arrivare">
+      <header class="getting__head">
+        <p class="section-index">06 — Come arrivare</p>
+        <h2 class="display reveal">Dall'aereo<br />al primo tuffo.</h2>
+      </header>
+      <ol class="getting__steps" id="gettingSteps"></ol>
+    </section>
+
+    <!-- ═══ CASSA COMUNE ═══ -->
+    <section class="kitty" id="cassa">
+      <div class="kitty__intro">
+        <p class="section-index">07 — Cassa comune</p>
+        <h2 class="display reveal">Cento euro,<br />zero pensieri.</h2>
+        <p class="lead reveal">
+          La quota è <strong>fissata a 100 € a testa</strong> e copre anche la quota
+          del coordinatore. Un fondo unico per le spese di gruppo: niente conti da
+          dividere ogni volta. Quel che avanza, torna indietro.
+        </p>
+      </div>
+
+      <div class="kitty__calc reveal" id="kittyCalc">
+        <div class="kitty__display">
+          <span class="kitty__label">Quota a testa · fissa</span>
+          <span class="kitty__amount">100<small>€</small></span>
+          <span class="kitty__total">Fondo totale · <strong id="kittyTotal">1.800</strong> €</span>
+        </div>
+        <ul class="kitty__split">
+          <li>Quota del coordinatore (il suo viaggio, diviso tra noi)</li>
+          <li>Tassa di soggiorno · 6 €</li>
+          <li>Colazione in hotel · 18 € (2 giorni)</li>
+          <li>Transfer di gruppo sull'isola</li>
+          <li>Welcome drink &amp; spese comuni</li>
+          <li class="is-out">Voli, attività extra e spese personali (a parte)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══ INCLUSO / ESCLUSO ═══ -->
+    <section class="incl" id="incluso">
+      <header class="incl__head">
+        <p class="section-index">08 — Cosa c'è dentro</p>
+        <h2 class="display reveal">Incluso &amp; escluso</h2>
+      </header>
+      <div class="incl__split">
+        <ul class="incl__col incl__col--in reveal">
+          <li>Coordinatore WeRoad per tutto il weekend</li>
+          <li>2 notti al Primavera Beach Hotel</li>
+          <li>Escursione in barca nella Baia di Mirabello</li>
+          <li>Welcome drink &amp; cena di arrivederci</li>
+          <li>Itinerario curato giorno per giorno</li>
+          <li>Assistenza sul posto</li>
+        </ul>
+        <ul class="incl__col incl__col--out reveal">
+          <li>Voli a/r</li>
+          <li>Colazione · 18 € (nella cassa comune)</li>
+          <li>Tassa di soggiorno &amp; transfer (cassa comune)</li>
+          <li>Pasti non indicati &amp; attività opzionali</li>
+          <li>Assicurazione &amp; spese personali</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══ ATTIVITÀ EXTRA ═══ -->
+    <section class="extras" id="extra">
+      <header class="extras__head">
+        <p class="section-index">09 — Attività extra</p>
+        <h2 class="display reveal">Da aggiungere,<br />se ti va.</h2>
+      </header>
+      <div class="extras__grid" id="extrasGrid"></div>
+    </section>
+
+    <!-- ═══ ZAINO / CHECKLIST ═══ -->
+    <section class="pack" id="zaino">
+      <div class="pack__intro">
+        <p class="section-index">10 — Lo zaino</p>
+        <h2 class="display reveal">Cosa mettere<br />in valigia.</h2>
+        <p class="lead reveal">Spunta mentre prepari. Resta salvato sul tuo telefono.</p>
+        <div class="pack__progress"><span id="packProgress" style="width:0%"></span></div>
+      </div>
+      <ul class="pack__list" id="packList"></ul>
+    </section>
+
+    <!-- ═══ DOVE MANGIARE ═══ -->
+    <section class="eat" id="mangiare">
+      <header class="eat__head">
+        <p class="section-index">11 — Dove mangiare</p>
+        <h2 class="display reveal">A tavola,<br />come i cretesi.</h2>
+        <div class="eat__filters" id="eatFilters"></div>
+      </header>
+      <div class="eat__magazine" id="eatGrid"></div>
+    </section>
+
+    <!-- ═══ DOVE USCIRE ═══ -->
+    <section class="night" id="uscire">
+      <div class="night__bg" data-parallax="0.12">
+        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1920&auto=format&fit=crop&q=85"
+             alt="Serata in discoteca con luci e folla" loading="lazy" />
+        <div class="night__scrim"></div>
+      </div>
+      <div class="night__content">
+        <p class="section-index night-index">12 — Le serate</p>
+        <h2 class="display night-title reveal">La notte<br />è giovane.</h2>
+        <p class="night__lead reveal">Le serate sono metà del viaggio. Malia è il cuore della movida cretese: una sera per scaldare i motori, una per spingere fino all'alba.</p>
+        <div class="night__grid" id="nightGrid"></div>
+
+        <div class="crawl reveal" id="crawl">
+          <div class="crawl__head">
+            <div>
+              <h3 class="crawl__title">Il giro di Malia</h3>
+              <p class="crawl__intro">Otto locali sulla Beach Road, dal warm-up all'alba. Tocca quelli che ti ispirano e costruisci il tuo giro: resta salvato sul telefono.</p>
+            </div>
+            <span class="crawl__count" id="crawlCount">Tocca i locali</span>
+          </div>
+          <ul class="crawl__list" id="clubList"></ul>
+        </div>
+
+        <div class="night__note reveal">
+          <p><strong>Per chi vuole calma:</strong> aperitivo a Plaka con vista su Spinalonga, o beach bar al tramonto a due passi dall'hotel.</p>
+          <p class="night__disclaimer">I nomi dei locali cambiano di stagione: chiedete sul posto la serata del momento.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ROSTER ═══ -->
+    <section class="roster" id="roster">
+      <header class="roster__head">
+        <p class="section-index">13 — Il gruppo</p>
+        <h3 class="roster__title reveal">Diciotto, presto amici.</h3>
+        <p class="roster__intro reveal">I viaggiatori del gruppo. Sotto ogni nome, quanti viaggi WeRoad ha già fatto.</p>
+      </header>
+      <ul class="roster__list" id="rosterGrid"></ul>
+    </section>
+
+    <!-- ═══ METEO + SOLE ═══ -->
+    <section class="weather" id="meteo">
+      <header class="weather__head">
+        <p class="section-index">14 — Cielo</p>
+        <h2 class="display reveal">Meteo &amp; sole</h2>
+      </header>
+      <div class="weather__cards" id="weatherCards"></div>
+    </section>
+
+    <!-- ═══ COUNTDOWN ═══ -->
+    <section class="countdown" id="countdown">
+      <div class="countdown__bg" data-parallax="0.15">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&auto=format&fit=crop&q=85"
+             alt="Tramonto dorato sulle acque del Mediterraneo" loading="lazy" />
+        <div class="countdown__scrim"></div>
+      </div>
+      <div class="countdown__content">
+        <p class="section-index night-index reveal">Si parte tra</p>
+        <div class="countdown__clock" id="clock" role="timer" aria-live="off">
+          <div class="unit"><span class="num" id="cdDays">00</span><span class="lab">giorni</span></div>
+          <div class="unit"><span class="num" id="cdHours">00</span><span class="lab">ore</span></div>
+          <div class="unit"><span class="num" id="cdMins">00</span><span class="lab">min</span></div>
+          <div class="unit"><span class="num" id="cdSecs">00</span><span class="lab">sec</span></div>
+        </div>
+        <p class="countdown__date reveal">Venerdì 10 luglio · ci vediamo al gate.</p>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <section class="faq" id="faq">
+      <header class="faq__head">
+        <p class="section-index">15 — Dubbi</p>
+        <h2 class="display reveal">Domande frequenti</h2>
+      </header>
+      <div class="faq__list" id="faqList"></div>
+    </section>
+
+  </main>
+
+  <!-- ░░ Footer ░░ -->
+  <footer class="footer" id="footer">
+    <div class="footer__bg" data-parallax="0.1">
+      <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1920&auto=format&fit=crop&q=85"
+           alt="Tramonto dorato sull'orizzonte del Mediterraneo" loading="lazy" />
+      <div class="footer__scrim"></div>
+    </div>
+    <div class="footer__content">
+      <h2 class="footer__title">See you<br />in Crete.</h2>
+      <div class="footer__meta">
+        <span>WeRoad</span><span aria-hidden="true">·</span><span>Luglio 2026</span>
+      </div>
+      <a href="#top" class="footer__up" data-cursor="hover" aria-label="Torna su">↑</a>
+    </div>
+  </footer>
+
+  <!-- ░░ Scripts (GSAP + Lenis via CDN, then modules) ░░ -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+  <script src="js/timeline.js?v=40" defer></script>
+  <script src="js/maps.js?v=40" defer></script>
+  <script src="js/main.js?v=40" defer></script>
+</body>
+</html>

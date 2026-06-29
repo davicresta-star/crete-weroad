@@ -1,0 +1,160 @@
+/* ============================================================
+   CRETE · WeRoad — animations.css
+   Scroll reveals, hero letters, ambient motion.
+   All motion is suppressed by prefers-reduced-motion (see style.css).
+   ============================================================ */
+
+/* ---------- No-JS / JS-failure fallback: never hide content unless JS is present ---------- */
+html:not(.js) .reveal,
+html:not(.js) [data-reveal],
+html:not(.js) [data-stagger] > *,
+html:not(.js) .section-index,
+html:not(.js) .hero__title .line span {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+html:not(.js) #preloader { display: none !important; }
+
+/* ---------- Reveal on scroll (IntersectionObserver toggles .is-visible) ---------- */
+.reveal,
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  will-change: opacity, transform;
+}
+.reveal.is-visible,
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* staggered children */
+[data-stagger] > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+[data-stagger].is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+[data-stagger].is-visible > *:nth-child(1) { transition-delay: 0.00s; }
+[data-stagger].is-visible > *:nth-child(2) { transition-delay: 0.06s; }
+[data-stagger].is-visible > *:nth-child(3) { transition-delay: 0.12s; }
+[data-stagger].is-visible > *:nth-child(4) { transition-delay: 0.18s; }
+[data-stagger].is-visible > *:nth-child(5) { transition-delay: 0.24s; }
+[data-stagger].is-visible > *:nth-child(6) { transition-delay: 0.30s; }
+[data-stagger].is-visible > *:nth-child(7) { transition-delay: 0.36s; }
+[data-stagger].is-visible > *:nth-child(8) { transition-delay: 0.42s; }
+
+/* ---------- Timeline day-panel switch ---------- */
+.day.is-active { animation: dayIn 0.5s var(--ease); }
+@keyframes dayIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+.day.is-active .day__item { opacity: 0; animation: itemIn 0.5s var(--ease) forwards; }
+.day.is-active .day__item:nth-child(1) { animation-delay: 0.08s; }
+.day.is-active .day__item:nth-child(2) { animation-delay: 0.14s; }
+.day.is-active .day__item:nth-child(3) { animation-delay: 0.20s; }
+.day.is-active .day__item:nth-child(4) { animation-delay: 0.26s; }
+.day.is-active .day__item:nth-child(5) { animation-delay: 0.32s; }
+.day.is-active .day__item:nth-child(6) { animation-delay: 0.38s; }
+@keyframes itemIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .day.is-active, .day.is-active .day__item { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* ---------- Hero letters intro ---------- */
+.hero__title .line span {
+  opacity: 0;
+  transform: translateY(120%);
+  animation: letterUp 1.1s var(--ease) forwards;
+}
+.hero__title .line span:nth-child(1) { animation-delay: 0.55s; }
+.hero__title .line span:nth-child(2) { animation-delay: 0.65s; }
+.hero__title .line span:nth-child(3) { animation-delay: 0.75s; }
+.hero__title .line span:nth-child(4) { animation-delay: 0.85s; }
+.hero__title .line span:nth-child(5) { animation-delay: 0.95s; }
+
+@keyframes letterUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Hero scroll indicator ---------- */
+.hero__scroll-line {
+  animation: scrollPulse 2.2s var(--ease) infinite;
+  transform-origin: top;
+}
+@keyframes scrollPulse {
+  0%   { transform: scaleY(0);   opacity: 0; }
+  35%  { transform: scaleY(1);   opacity: 1; }
+  70%  { transform: scaleY(1);   opacity: 1; }
+  100% { transform: scaleY(0);   opacity: 0; transform-origin: bottom; }
+}
+
+/* ---------- Hero waves drift ---------- */
+.hero__waves path:first-child {
+  animation: waveDrift 14s ease-in-out infinite alternate;
+}
+.hero__waves path:last-child {
+  animation: waveDrift 10s ease-in-out infinite alternate-reverse;
+}
+@keyframes waveDrift {
+  from { transform: translateX(-2%); }
+  to   { transform: translateX(2%); }
+}
+
+/* ---------- Preloader fill ---------- */
+.preloader__fill {
+  animation: loadFill 1.2s var(--ease) forwards;
+}
+@keyframes loadFill {
+  to { width: 100%; }
+}
+
+/* ---------- Number flip on countdown tick ---------- */
+.unit .num.tick {
+  animation: tick 0.5s var(--ease);
+}
+@keyframes tick {
+  0%   { transform: translateY(0); opacity: 1; }
+  40%  { transform: translateY(-8px); opacity: 0.3; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ---------- Section index small fade ---------- */
+.section-index { opacity: 0; transform: translateY(10px); transition: opacity .8s var(--ease) .1s, transform .8s var(--ease) .1s; }
+.is-visible .section-index,
+.section-index.is-visible { opacity: 1; transform: none; }
+
+/* ---------- Gentle float for badges/markers ---------- */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+/* ---------- Force-visible (set by JS when animations can't run, e.g. background tab) ---------- */
+html.reveal-all .reveal,
+html.reveal-all [data-reveal],
+html.reveal-all [data-stagger] > *,
+html.reveal-all .section-index,
+html.reveal-all .hero__title .line span {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+/* ---------- Reduced motion: cancel keyframe intros so content is visible ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, [data-reveal], [data-stagger] > *, .section-index { opacity: 1 !important; transform: none !important; }
+  .hero__title .line span { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .hero__scroll-line, .hero__waves path, .preloader__fill { animation: none !important; }
+  .preloader__fill { width: 100% !important; }
+}
