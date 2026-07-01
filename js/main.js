@@ -583,7 +583,7 @@
     { n: "Fabio Mazzotta", x: 0, age: 46 },
     { n: "Ivan Vinciguerra", x: 0, age: 28 },
     { n: "Vincenzo Menga", x: 0, age: 31 },
-    { n: "Valentina Paglia", x: 0 },
+    { n: "Valentina Paglia", x: 4 },
     { n: "Veronica Roppoli", x: 4, age: 33 },
     { n: "Luciano Cancelli", x: 2, age: 35 },
     { n: "Salvatore Lubello", x: 0 },
