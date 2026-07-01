@@ -607,10 +607,10 @@
     { type: "Tripla", beds: 3, people: ["Davide Janiri", "Vincenzo Menga", "Marco Bacci"] },
     { type: "Tripla", beds: 3, people: ["Francesca Dias", "Veronica Roppoli", "Mariam Scuderi"] },
     { type: "Tripla", beds: 3, people: ["Irene Cannello", "Stefania Spagnoletti", "Cecilia Sala"] },
-    { type: "Tripla", beds: 3, people: ["Salvatore Lubello", "Fabio Mazzotta", "Valentina Paglia"] },
+    { type: "Doppia", beds: 2, people: ["Salvatore Lubello", "Fabio Mazzotta"] },
     { type: "Tripla", beds: 3, people: ["Ivan Vinciguerra", "Lorenzo Proietti", "Luciano Cancelli"] },
     { type: "Doppia", beds: 2, people: ["Bryanna Netto de Araujo", "Omayma El Kaddouri"] },
-    { type: "Doppia", beds: 2, people: ["Salvatore Semprebuono", "Davide Saggese"] },
+    { type: "Tripla", beds: 3, people: ["Valentina Paglia", "Davide Saggese", "Salvatore Semprebuono"] },
   ];
   function rooming() {
     const grid = $("#roomGrid"); if (!grid) return;
