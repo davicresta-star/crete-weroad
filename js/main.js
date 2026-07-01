@@ -230,7 +230,7 @@
       { num: "W46087", airline: "Wizz Air", from: "Roma Fiumicino", to: "Heraklion", date: "Ven 10 lug", dep: "11:55", arr: "15:30",
         pax: ["Veronica Roppoli", "Irene Cannello", "Mariam Scuderi", "Luciano Cancelli", "Lorenzo Proietti", "Marco Bacci", "Salvatore Lubello"] },
       { num: "V7 1730", airline: "Volotea", from: "Napoli", to: "Heraklion", date: "Ven 10 lug", dep: "13:30", arr: "16:30",
-        pax: ["Salvatore Semprebuono", "Davide Saggese", "Stefania Spagnoletti"] },
+        pax: ["Salvatore Semprebuono", "Davide Saggese", "Stefania Spagnoletti", "Valentina Paglia"] },
       { num: "FR 4400", airline: "Ryanair", from: "Milano Bergamo", to: "Heraklion", date: "Ven 10 lug", dep: "12:55", arr: "16:35",
         pax: ["Cecilia Sala"] },
       { num: "W46439", airline: "Wizz Air", from: "Milano Malpensa", to: "Heraklion", date: "Gio 09 lug", dep: "17:45", arr: "21:35",
@@ -243,11 +243,11 @@
       { num: "V7 1731", airline: "Volotea", from: "Heraklion", to: "Milano Malpensa", date: "Dom 12 lug", dep: "14:35", arr: "20:05",
         pax: ["Davide Janiri", "Francesca Dias"] },
       { num: "V7 1731", airline: "Volotea", from: "Heraklion", to: "Napoli", date: "Dom 12 lug", dep: "14:35", arr: "15:40",
-        pax: ["Davide Saggese", "Stefania Spagnoletti", "Salvatore Semprebuono"] },
+        pax: ["Davide Saggese", "Stefania Spagnoletti", "Salvatore Semprebuono", "Valentina Paglia"] },
       { num: "W46440", airline: "Wizz Air", from: "Heraklion", to: "Milano Malpensa", date: "Lun 13 lug", dep: "17:00", arr: "19:00",
-        pax: ["Vincenzo Menga"] },
+        pax: ["Vincenzo Menga", "Ivan Vinciguerra"] },
       { num: "AZ 737", airline: "ITA Airways", from: "Heraklion", to: "Roma Fiumicino", date: "Dom 12 lug", dep: "14:20", arr: "15:40",
-        pax: ["Cecilia Sala", "Lorenzo Proietti"] },
+        pax: ["Cecilia Sala", "Lorenzo Proietti", "Irene Cannello", "Marco Bacci"] },
       { num: "W46088", airline: "Wizz Air", from: "Heraklion", to: "Roma Fiumicino", date: "Dom 12 lug", dep: "09:50", arr: "11:20",
         pax: ["Mariam Scuderi"] },
       { num: "EJU3680", airline: "easyJet", from: "Heraklion", to: "Milano Malpensa", date: "Dom 12 lug", dep: "23:25", arr: "01:20",
@@ -260,7 +260,7 @@
         pax: ["Veronica Roppoli", "Luciano Cancelli"] },
     ],
     // Ritorno ancora incompleto / non comunicato
-    ritornoPending: ["Ivan Vinciguerra · 13 lug, da completare", "Irene Cannello", "Marco Bacci"],
+    ritornoPending: [],
   };
 
   function flights() {
@@ -365,6 +365,48 @@
       </li>`).join("");
   }
 
+  // Transfer aeroporto → hotel, raggruppati per orario d'arrivo
+  const TRANSFERS = [
+    {
+      mode: "Van condiviso", when: "Ven 10 lug · ~16:35", best: true,
+      cost: "111,60 € totali", per: "≈ 9,30 € a testa",
+      note: "Il gruppo da Fiumicino (arrivo 15:30) aspetta ~1h e parte insieme a Napoli e Bergamo.",
+      pax: ["Veronica Roppoli", "Irene Cannello", "Mariam Scuderi", "Luciano Cancelli", "Lorenzo Proietti", "Marco Bacci", "Salvatore Lubello", "Salvatore Semprebuono", "Davide Saggese", "Stefania Spagnoletti", "Valentina Paglia", "Cecilia Sala"],
+    },
+    {
+      mode: "Taxi", when: "Ven 10 lug · 18:25", best: false,
+      cost: "≈ 50 € totali", per: "≈ 12,50 € a testa",
+      note: "Arrivano da Malpensa ~2h dopo il gruppo: un taxi conviene rispetto a un van intero.",
+      pax: ["Davide Janiri", "Vincenzo Menga", "Francesca Dias", "Ivan Vinciguerra"],
+    },
+    {
+      mode: "Taxi", when: "Gio 9 lug · 21:35", best: false,
+      cost: "≈ 50 € totali", per: "≈ 25 € a testa",
+      note: "Arrivo il giorno prima: transfer indipendente dal resto del gruppo.",
+      pax: ["Bryanna De Araujo", "Omayma El Kaddouri"],
+    },
+    {
+      mode: "Transfer proprio", when: "Mar 30 giu · 22:35", best: false,
+      cost: "—", per: "in autonomia",
+      note: "Arriva con largo anticipo: si organizza da sé.",
+      pax: ["Fabio Mazzotta"],
+    },
+  ];
+  function transfers() {
+    const grid = $("#transfersGrid"); if (!grid) return;
+    grid.innerHTML = TRANSFERS.map((t) => `
+      <article class="tcard${t.best ? " tcard--best" : ""}" data-reveal>
+        <header class="tcard__head">
+          <span class="tcard__mode">${t.mode}</span>
+          <span class="tcard__count">${t.pax.length} pax</span>
+        </header>
+        <p class="tcard__when">${t.when}</p>
+        <div class="tcard__cost"><strong>${t.cost}</strong><span>${t.per}</span></div>
+        <p class="tcard__note">${t.note}</p>
+        <ul class="tcard__pax">${t.pax.map((n) => `<li>${n}</li>`).join("")}</ul>
+      </article>`).join("");
+  }
+
   /* ---------------------------------------------------------
      11. EXTRAS — griglia uniforme 3×2, ordine: mare → cultura → sapori
   --------------------------------------------------------- */
@@ -442,7 +484,7 @@
       when: "Venerdì",
       title: "La prima sera",
       mood: "Warm-up · autentico",
-      desc: "Si parte piano, per fare gruppo. Welcome drink offerto dalla cassa, poi i vicoli del centro storico di Malia — lontano dal caos della strip. Se trovate una taverna con la lyra dal vivo, fermatevi: è l'anima dell'isola.",
+      desc: "Si parte piano, per fare gruppo. Il welcome drink è già incluso nel pacchetto, poi i vicoli del centro storico di Malia — lontano dal caos della strip. Se trovate una taverna con la lyra dal vivo, fermatevi: è l'anima dell'isola.",
       img: "https://images.unsplash.com/photo-1545128485-c400e7702796?w=800&auto=format&fit=crop&q=80",
       spots: [
         { n: "Centro storico di Malia", t: "Taverne, raki & lyra dal vivo" },
@@ -541,7 +583,7 @@
     { n: "Fabio Mazzotta", x: 0, age: 46 },
     { n: "Ivan Vinciguerra", x: 0, age: 28 },
     { n: "Vincenzo Menga", x: 0, age: 31 },
-    { n: "Riza Anton Camci", x: 9, age: 34 },
+    { n: "Valentina Paglia", x: 0 },
     { n: "Veronica Roppoli", x: 4, age: 33 },
     { n: "Luciano Cancelli", x: 2, age: 35 },
     { n: "Salvatore Lubello", x: 0 },
@@ -565,7 +607,7 @@
     { type: "Tripla", beds: 3, people: ["Davide Janiri", "Vincenzo Menga", "Marco Bacci"] },
     { type: "Tripla", beds: 3, people: ["Francesca Dias", "Veronica Roppoli", "Mariam Scuderi"] },
     { type: "Tripla", beds: 3, people: ["Irene Cannello", "Stefania Spagnoletti", "Cecilia Sala"] },
-    { type: "Tripla", beds: 3, people: ["Salvatore Lubello", "Fabio Mazzotta", "Riza Anton Camci"] },
+    { type: "Tripla", beds: 3, people: ["Salvatore Lubello", "Fabio Mazzotta", "Valentina Paglia"] },
     { type: "Tripla", beds: 3, people: ["Ivan Vinciguerra", "Lorenzo Proietti", "Luciano Cancelli"] },
     { type: "Doppia", beds: 2, people: ["Bryanna Netto de Araujo", "Omayma El Kaddouri"] },
     { type: "Doppia", beds: 2, people: ["Salvatore Semprebuono", "Davide Saggese"] },
@@ -682,7 +724,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("is-loading");
     // render data sections first (timeline.js/maps.js render their own)
-    flights(); getting(); extras(); eat(); night(); clubs(); roster(); rooming(); weather(); faq(); kitty(); pack();
+    flights(); getting(); transfers(); extras(); eat(); night(); clubs(); roster(); rooming(); weather(); faq(); kitty(); pack();
     imageFallbacks();
     // then wire motion (after DOM exists)
     preloader(); smoothScroll(); anchorScroll(); navState(); mobileMenu(); cursor(); countdown(); pwa();
