@@ -365,36 +365,70 @@
       </li>`).join("");
   }
 
-  // Transfer aeroporto → hotel, raggruppati per orario d'arrivo
-  const TRANSFERS = [
-    {
-      mode: "Van condiviso", when: "Ven 10 lug · ~16:35", best: true,
-      cost: "111,60 € totali", per: "≈ 9,30 € a testa",
-      note: "Il gruppo da Fiumicino (arrivo 15:30) aspetta ~1h e parte insieme a Napoli e Bergamo.",
-      pax: ["Veronica Roppoli", "Irene Cannello", "Mariam Scuderi", "Luciano Cancelli", "Lorenzo Proietti", "Marco Bacci", "Salvatore Lubello", "Salvatore Semprebuono", "Davide Saggese", "Stefania Spagnoletti", "Valentina Paglia", "Cecilia Sala"],
-    },
-    {
-      mode: "Taxi", when: "Ven 10 lug · 18:25", best: false,
-      cost: "≈ 50 € totali", per: "≈ 12,50 € a testa",
-      note: "Arrivano da Malpensa ~2h dopo il gruppo: un taxi conviene rispetto a un van intero.",
-      pax: ["Davide Janiri", "Vincenzo Menga", "Francesca Dias", "Ivan Vinciguerra"],
-    },
-    {
-      mode: "Taxi", when: "Gio 9 lug · 21:35", best: false,
-      cost: "≈ 50 € totali", per: "≈ 25 € a testa",
-      note: "Arrivo il giorno prima: transfer indipendente dal resto del gruppo.",
-      pax: ["Bryanna De Araujo", "Omayma El Kaddouri"],
-    },
-    {
-      mode: "Transfer proprio", when: "Mar 30 giu · 22:35", best: false,
-      cost: "—", per: "in autonomia",
-      note: "Arriva con largo anticipo: si organizza da sé.",
-      pax: ["Fabio Mazzotta"],
-    },
-  ];
+  // Transfer aeroporto ⇄ hotel, organizzati per direzione
+  const TRANSFERS = {
+    andata: [
+      {
+        mode: "Van condiviso", when: "Ven 10 lug · dall'aeroporto", best: true,
+        cost: "111,60 € totali", per: "≈ 11,20 € a testa",
+        note: "Il gruppo di Roma al completo, insieme a Bryanna, Omayma e Fabio.",
+        pax: ["Veronica Roppoli", "Irene Cannello", "Mariam Scuderi", "Luciano Cancelli", "Lorenzo Proietti", "Marco Bacci", "Salvatore Lubello", "Bryanna De Araujo", "Omayma El Kaddouri", "Fabio Mazzotta"],
+      },
+      {
+        mode: "Taxi", when: "Ven 10 lug · arrivi 16:30–16:35", best: false,
+        cost: "≈ 50 € totali", per: "≈ 10 € a testa",
+        note: "Gruppo di Napoli + Cecilia: in cinque serve un taxi grande (minivan).",
+        pax: ["Davide Saggese", "Stefania Spagnoletti", "Salvatore Semprebuono", "Valentina Paglia", "Cecilia Sala"],
+      },
+      {
+        mode: "Taxi", when: "Ven 10 lug · arrivo 18:25", best: false,
+        cost: "≈ 50 € totali", per: "≈ 12,50 € a testa",
+        note: "Gruppo Malpensa: arrivano più tardi, taxi diretto in hotel.",
+        pax: ["Davide Janiri", "Vincenzo Menga", "Francesca Dias", "Ivan Vinciguerra"],
+      },
+    ],
+    ritorno: [
+      {
+        mode: "Van condiviso", when: "Dom 12 lug · per l'aeroporto", best: true,
+        cost: "111,60 € totali", per: "≈ 10,15 € a testa (in 11)",
+        note: "Voli del primo pomeriggio: tutti insieme in van diretto all'aeroporto.",
+        pax: ["Davide Janiri", "Francesca Dias", "Davide Saggese", "Stefania Spagnoletti", "Salvatore Semprebuono", "Valentina Paglia", "Cecilia Sala", "Lorenzo Proietti", "Irene Cannello", "Marco Bacci", "Salvatore Lubello"],
+      },
+      {
+        mode: "Taxi o bus", when: "Mar 14 lug · volo 16:30", best: false,
+        cost: "Taxi ≈ 50 € · bus ≈ 5 € a testa", per: "≈ 25 € a testa in taxi",
+        note: "Partono due giorni dopo il gruppo, in autonomia.",
+        pax: ["Veronica Roppoli", "Luciano Cancelli"],
+      },
+      {
+        mode: "Taxi", when: "Dom 12 lug · volo 23:25", best: false,
+        cost: "≈ 50 € totali", per: "≈ 25 € a testa",
+        note: "Partenza in serata, in autonomia.",
+        pax: ["Bryanna De Araujo", "Omayma El Kaddouri"],
+      },
+      {
+        mode: "Taxi o bus", when: "Dom 12 lug · volo 09:50", best: false,
+        cost: "Bus ≈ 5 € · taxi ≈ 50 €", per: "",
+        note: "Partenza presto al mattino: verificare gli orari del bus KTEL.",
+        pax: ["Mariam Scuderi"],
+      },
+      {
+        mode: "Taxi", when: "Lun 13 lug · volo 17:00", best: false,
+        cost: "≈ 50 € totali", per: "≈ 25 € a testa",
+        note: "Partono il giorno dopo il gruppo.",
+        pax: ["Vincenzo Menga", "Ivan Vinciguerra"],
+      },
+      {
+        mode: "Taxi o bus", when: "Mar 14 lug · volo 10:35", best: false,
+        cost: "Bus ≈ 5 € · taxi ≈ 50 €", per: "",
+        note: "Ultimo a partire: bus KTEL o taxi in autonomia.",
+        pax: ["Fabio Mazzotta"],
+      },
+    ],
+  };
   function transfers() {
     const grid = $("#transfersGrid"); if (!grid) return;
-    grid.innerHTML = TRANSFERS.map((t) => `
+    const card = (t) => `
       <article class="tcard${t.best ? " tcard--best" : ""}" data-reveal>
         <header class="tcard__head">
           <span class="tcard__mode">${t.mode}</span>
@@ -404,7 +438,16 @@
         <div class="tcard__cost"><strong>${t.cost}</strong><span>${t.per}</span></div>
         <p class="tcard__note">${t.note}</p>
         <ul class="tcard__pax">${t.pax.map((n) => `<li>${n}</li>`).join("")}</ul>
-      </article>`).join("");
+      </article>`;
+    grid.innerHTML = `
+      <div class="tdir">
+        <p class="tdir__label">Andata · aeroporto → hotel</p>
+        <div class="transfers__grid">${TRANSFERS.andata.map(card).join("")}</div>
+      </div>
+      <div class="tdir">
+        <p class="tdir__label">Ritorno · hotel → aeroporto</p>
+        <div class="transfers__grid">${TRANSFERS.ritorno.map(card).join("")}</div>
+      </div>`;
   }
 
   /* ---------------------------------------------------------

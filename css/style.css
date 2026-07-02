@@ -343,6 +343,8 @@ body.cursor-hover .cursor__ring { width: 64px; height: 64px; background: rgba(92
 .transfers__head { margin-bottom: 1.8rem; }
 .transfers__title { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2rem); }
 .transfers__note { font-size: 0.9rem; color: var(--ink-soft); margin-top: 0.6rem; max-width: 60ch; }
+#transfersGrid { display: flex; flex-direction: column; gap: 2.6rem; }
+.tdir__label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 1.1rem; }
 .transfers__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 .tcard { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; background: var(--surface); display: flex; flex-direction: column; }
 .tcard--best { border-color: var(--turquoise); background: var(--lime-white); }
