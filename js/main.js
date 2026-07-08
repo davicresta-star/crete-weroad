@@ -455,10 +455,10 @@
   --------------------------------------------------------- */
   const EXTRAS = [
     { tag: "Mare", title: "Voulisma Beach", desc: "La spiaggia caraibica di Creta: acqua turchese e sabbia chiara. Meglio al mattino presto.", price: "Lettini in loco", dur: "Mezza giornata", level: 3, img: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&auto=format&fit=crop&q=80" },
-    { tag: "Cultura", title: "Palazzo di Cnosso", desc: "Il sito minoico più famoso: Minotauro, Arianna, Dedalo e Icaro. Tappa ideale di domenica.", price: "Biglietto in loco", dur: "2–3 ore", level: 3, img: "images/backgrounds/extra-cnosso.webp" },
+    { tag: "In programma", title: "Palazzo di Cnosso", desc: "Il sito minoico più famoso: Minotauro, Arianna, Dedalo e Icaro. Ci andiamo insieme domenica mattina.", price: "Offre la cassa comune", dur: "2–3 ore", level: 3, img: "images/backgrounds/extra-cnosso.webp" },
     { tag: "Gusto", title: "Food tour di Heraklion", desc: "Mercato, mura veneziane e degustazioni di prodotti tipici nel centro storico.", price: "Su richiesta", dur: "Mezza giornata", level: 2, img: "images/food/heraklion.webp" },
     { tag: "Esperienza", title: "Cucina cretese · Lasinthos", desc: "Corso di cucina all'Eco Park: mani in pasta e ricette dell'isola.", price: "Su richiesta", dur: "3 ore", level: 2, img: "images/food/extra-cucina.webp" },
-    { tag: "Sapori", title: "Degustazione d'olio", desc: "Omalia Olive Press, a Malia: l'EVO cretese tra i migliori del Mediterraneo.", price: "≈ 15 €", dur: "1 ora", level: 2, img: "images/food/extra-olio.webp" },
+    { tag: "In programma", title: "Degustazione di olio & vino", desc: "Tappa di gruppo sabato, al rientro dalla barca: EVO cretese e vini locali in frantoio.", price: "≈ 15 €", dur: "1 ora", level: 2, img: "images/food/extra-olio.webp" },
     { tag: "Borghi", title: "Villaggio di Kritsa", desc: "Vicoli tradizionali nell'entroterra, lontano dalla costa turistica.", price: "Ingresso libero", dur: "1–2 ore", level: 1, img: "images/backgrounds/extra-kritsa.webp" },
   ];
   function extras() {
@@ -486,11 +486,11 @@
   --------------------------------------------------------- */
   const REST = [
     { cat: "cena", feat: true, name: "Taverne del centro storico · Malia", rev: "Dakos, formaggi locali, olive e agnello cotto lento tra i vicoli in pietra. Il raki di fine cena è quasi sempre offerto: la prima sera giusta per tutto il gruppo.", price: "€€", img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80", lat: 35.2876, lng: 25.4615 },
-    { cat: "colazione", name: "Caffè greco al porto", rev: "Frappé freddo e bougatsa per cominciare lenti.", price: "€", img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&auto=format&fit=crop&q=80", lat: 35.2890, lng: 25.4500 },
-    { cat: "street food", name: "Souvlaki & gyros", rev: "Pita gyros da mangiare in piedi, il classico cretese.", price: "€", img: "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=800&auto=format&fit=crop&q=80", lat: 35.2882, lng: 25.4592 },
+    { cat: "colazione", name: "Caffè greco al porto", rev: "Frappé freddo e bougatsa per cominciare lenti.", price: "€", img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=800&auto=format&fit=crop&q=80", lat: 35.2890, lng: 25.4500 },
+    { cat: "street food", name: "Souvlaki & gyros", rev: "Pita gyros da mangiare in piedi, il classico cretese.", price: "€", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&auto=format&fit=crop&q=80", lat: 35.2882, lng: 25.4592 },
     { cat: "pranzo", wide: true, name: "Taverna sul mare · Plaka", rev: "Pesce fresco fronte Spinalonga: pranzo lungo guardando l'isola-fortezza. Una delle esperienze più autentiche del weekend.", price: "€€", img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&auto=format&fit=crop&q=80", lat: 35.2960, lng: 25.7380 },
     { cat: "cena", name: "Ristoranti del Lago · Agios Nikolaos", rev: "Cucina vista mare attorno al Lago Voulismeni.", price: "€€", img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&auto=format&fit=crop&q=80", lat: 35.1903, lng: 25.7160 },
-    { cat: "dolci", name: "Lichnarakia · Heraklion", rev: "Dolcetti al formaggio e caffè greco nel centro storico, prima del volo.", price: "€", img: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=800&auto=format&fit=crop&q=80", lat: 35.3387, lng: 25.1442 },
+    { cat: "dolci", name: "Lichnarakia · Heraklion", rev: "Dolcetti al formaggio e caffè greco nel centro storico, prima del volo.", price: "€", img: "https://images.unsplash.com/photo-1519676867240-f03562e64548?w=800&auto=format&fit=crop&q=80", lat: 35.3387, lng: 25.1442 },
   ];
   function eat() {
     const grid = $("#eatGrid"), filters = $("#eatFilters"); if (!grid) return;
@@ -649,11 +649,12 @@
   const ROOMS = [
     { type: "Tripla", beds: 3, people: ["Davide Janiri", "Vincenzo Menga", "Marco Bacci"] },
     { type: "Tripla", beds: 3, people: ["Francesca Dias", "Veronica Roppoli", "Mariam Scuderi"] },
-    { type: "Tripla", beds: 3, people: ["Irene Cannello", "Stefania Spagnoletti", "Cecilia Sala"] },
-    { type: "Doppia", beds: 2, people: ["Salvatore Lubello", "Fabio Mazzotta"] },
     { type: "Tripla", beds: 3, people: ["Ivan Vinciguerra", "Lorenzo Proietti", "Luciano Cancelli"] },
+    { type: "Tripla", beds: 3, people: ["Salvatore Lubello", "Fabio Mazzotta", ""] },
+    { type: "Tripla", beds: 3, people: ["Davide Saggese", "Salvatore Semprebuono", ""] },
+    { type: "Doppia", beds: 2, people: ["Irene Cannello", "Stefania Spagnoletti"] },
     { type: "Doppia", beds: 2, people: ["Bryanna Netto de Araujo", "Omayma El Kaddouri"] },
-    { type: "Tripla", beds: 3, people: ["Valentina Paglia", "Davide Saggese", "Salvatore Semprebuono"] },
+    { type: "Doppia", beds: 2, people: ["Valentina Paglia", "Cecilia Sala"] },
   ];
   function rooming() {
     const grid = $("#roomGrid"); if (!grid) return;
@@ -719,7 +720,7 @@
     { q: "L'escursione in barca è inclusa?", a: "Sì, la crociera nella Baia di Mirabello del sabato è pagata in anticipo. A bordo: drink di benvenuto al raki, giochi galleggianti e anguria. Ritrovo a Elounda verso le 10:15, partenza alle 11:00 (~4h30)." },
     { q: "Cosa devo portare?", a: "Costume, crema solare alta, scarpe da scoglio (per snorkeling e cale) e contanti per la cassa comune. La checklist completa è nella sezione «Lo zaino», salvabile sul telefono." },
     { q: "Che valuta si usa?", a: "Euro. Le carte sono accettate quasi ovunque, ma porta contanti per le taverne più piccole e per i transfer." },
-    { q: "Cosa si fa la domenica?", a: "Dipende dall'orario del volo: o ultimo mare a Voulisma Beach (la «caraibica» di Creta), o il Palazzo di Cnosso, con un'ultima passeggiata e pranzo a Heraklion prima del gate." },
+    { q: "Cosa si fa la domenica?", a: "Mattina tutti al Palazzo di Cnosso — l'ingresso lo offre la cassa comune — poi ultima passeggiata e caffè greco a Heraklion prima del van per l'aeroporto." },
   ];
   function faq() {
     const list = $("#faqList"); if (!list) return;

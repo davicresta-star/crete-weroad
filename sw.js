@@ -3,7 +3,7 @@
    Offline-first for the app shell. Bump CACHE on each release.
    Remote photos are cached opportunistically (stale-while-revalidate).
    ============================================================ */
-const CACHE = "crete-weroad-v49";
+const CACHE = "crete-weroad-v52";
 const SHELL = [
   "./",
   "./index.html",

@@ -30,22 +30,21 @@ const ITINERARY = [
       { time: "10:15", t: "Ritrovo a Elounda", s: "Transfer da Malia/Stalida (~35 min). Meglio in anticipo per il punto barca." },
       { time: "11:00", t: "Escursione in barca · 4h30", s: "Pagata in anticipo dal TP. Drink di raki, giochi galleggianti e anguria a bordo." },
       { time: "in mare", t: "Spinalonga & Grotta di Barbarossa", s: "Poi le baie di Kolokytha e Skistra: soste per nuotare e snorkeling." },
-      { time: "Pomeriggio", t: "Plaka o Agios Nikolaos", s: "Villaggio di pescatori sotto Spinalonga, o la cittadina sul Lago Voulismeni." },
-      { time: "Rientro", t: "Chicca: degustazione d'olio", s: "Breve sosta a Kritsa o in un frantoio: l'EVO cretese è tra i migliori del Mediterraneo." },
+      { time: "Pomeriggio", t: "Degustazione di olio & vino", s: "Tappa di gruppo sulla via del rientro: EVO cretese e vini locali in frantoio." },
+      { time: "Rientro", t: "Doccia, tuffo, si riparte", s: "Tempo libero in hotel per ricaricarsi prima dell'ultima notte." },
       { time: "Sera", t: "Cena di arrivederci & movida", s: "Cena inclusa, poi serata a Malia, cuore della notte cretese." }
     ]
   },
   {
     num: "03",
     label: "Domenica 12 luglio",
-    title: "Mare caraibico oppure il Minotauro",
-    img: "images/backgrounds/day3.webp",
-    alt: "Acque turchesi e sabbia chiara di una spiaggia cretese",
+    title: "Cnosso, il Minotauro & l'ultimo caffè",
+    img: "images/backgrounds/extra-cnosso.webp",
+    alt: "Colonne rosse e rovine del Palazzo di Cnosso",
     items: [
-      { time: "Mattina", t: "Dipende dall'orario del volo", s: "Si sceglie tra ultimo mare e cultura, poi rientro in aeroporto." },
-      { time: "Mare", t: "Voulisma Beach", s: "La “caraibica di Creta”: acqua turchese e sabbia chiara. Presto = niente folla." },
-      { time: "Cultura", t: "Palazzo di Cnosso", s: "Minotauro, Arianna, Dedalo e Icaro. A 25–30 min dalla base." },
-      { time: "Pranzo", t: "Ultima passeggiata a Heraklion", s: "Caffè greco e lichnarakia nel centro storico prima del gate." }
+      { time: "Mattina", t: "Palazzo di Cnosso", s: "Attività di gruppo offerta dalla cassa comune: Minotauro, Arianna, Dedalo e Icaro." },
+      { time: "Mezzodì", t: "Ultima passeggiata a Heraklion", s: "Caffè greco e lichnarakia nel centro storico, a due passi dal palazzo." },
+      { time: "Pomeriggio", t: "Rientro in aeroporto", s: "Van di gruppo per i voli del primo pomeriggio. Kalò taxidi." }
     ]
   }
 ];
